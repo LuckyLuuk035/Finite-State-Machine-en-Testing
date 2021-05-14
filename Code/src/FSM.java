@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class FSM {
     private List<Node> nodes;
     private Node state;
@@ -18,7 +19,7 @@ public class FSM {
     }
 
     public List<String> run() {
-        List<String> path = new ArrayList<>();
+        List<String> path = new ArrayList<String>();
         path.add(this.state.getName());
         for(char ch : input.toCharArray()) {
             Node nextNode = state.getNext(ch);

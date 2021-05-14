@@ -1,4 +1,5 @@
 public class Node {
+
     private String name;
     private Node aPath;
     private Node bPath;

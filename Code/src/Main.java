@@ -19,7 +19,7 @@ public class Main {
         s3.setAPath(s3);
         s3.setBPath(s0);
 
-        List<Node> nodeList = new ArrayList<>();
+        List<Node> nodeList = new ArrayList<Node>();
         nodeList.add(s0);
         nodeList.add(s1);
         nodeList.add(s2);
