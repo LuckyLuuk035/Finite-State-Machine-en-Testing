@@ -1,13 +1,20 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
 
-    public void formatieveOpdract(){
-
-    }
     public static void main(String[] args) {
+        formatieveOpdracht();
+    }
 
+    private static void formatieveOpdracht() {
+        List<String> list = Arrays.asList("s0", "s1", "s2", "s3");
+        List<Node> nodeList = Node.createNodes(list);
+
+
+        FSM fsmOpdracht = new FSM(nodeList,nodeList.get(0),"BBABA");
+        System.out.println(fsmOpdracht.run());
     }
 }
 

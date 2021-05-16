@@ -36,8 +36,6 @@ class NodeTest {
         for(String nodeName : list) {
             nodeArr.add(new Node(nodeName));
         }
-        for (Node n : nodeArr){
-            System.out.println(n.getName());
-        }
+//        System.out.println(nodeArr.get(0).getName());
     }
 }

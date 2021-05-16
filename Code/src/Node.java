@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Node {
 
     private String name;
@@ -19,6 +23,15 @@ public class Node {
 
     public void setBPath(Node bPath) {
         this.bPath = bPath;
+    }
+
+    public static ArrayList<Node> createNodes(List<String> list){
+        ArrayList<Node> nodeArr = new ArrayList<Node>();
+
+        for(String nodeName : list) {
+            nodeArr.add(new Node(nodeName));
+        }
+        return nodeArr;
     }
 
     public Node getNext(char next) {
