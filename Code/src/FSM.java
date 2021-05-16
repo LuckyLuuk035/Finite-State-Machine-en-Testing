@@ -3,16 +3,20 @@ import java.util.List;
 
 
 public class FSM {
-    private List<Node> nodes;
+    private List<String> nodes;
     private Node state;
     private String input;
 
 
-    public FSM (List<Node> nodes, Node state, String input) {
+    public FSM (List<String> nodes, Node state, String input) {
         this.nodes = nodes;
         this.state = state;
         this.input = input;
     }
+
+//    public void createNodes(){
+//        ArrayList<Node> nodeArr = new ArrayList<Node>();
+//    }
 
     public void setState(Node state) {
         this.state = state;

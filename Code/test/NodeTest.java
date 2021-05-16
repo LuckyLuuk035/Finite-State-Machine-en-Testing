@@ -1,10 +1,14 @@
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class NodeTest {
     Node n0 = new Node("n0");
-
 
 
     @Test
@@ -22,5 +26,18 @@ class NodeTest {
 
         assertEquals("n1",n0.getNext('A').getName());
         assertEquals("n2",n0.getNext('B').getName());
+    }
+
+    @Test
+    void createNodes() throws Exception{
+        List<String> list = Arrays.asList("s0", "s1", "s2", "s3");
+        ArrayList<Node> nodeArr = new ArrayList<Node>();
+
+        for(String nodeName : list) {
+            nodeArr.add(new Node(nodeName));
+        }
+        for (Node n : nodeArr){
+            System.out.println(n.getName());
+        }
     }
 }
