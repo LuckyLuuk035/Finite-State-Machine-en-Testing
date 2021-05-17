@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class Node {
 
     private String name;
-    private HashMap<String, Node> paths;
+    private LinkedHashMap<String, Node> paths;
 
 
     public Node(String name) {
@@ -17,20 +17,20 @@ public class Node {
         return name;
     }
 
-    public void setPaths(HashMap<String, Node> nodeList, List<String> pathNames) {
-        HashMap<String,Node> temp = new HashMap<String, Node>();
+    public void setPaths(LinkedHashMap<String, Node> nodeList, List<String> pathNames) {
+        LinkedHashMap<String,Node> temp = new LinkedHashMap<String, Node>();
         for(String node : pathNames){
             temp.put(node,nodeList.get(node));
         }
         this.paths = temp;
     }
 
-    public HashMap<String, Node> getPaths() {
+    public LinkedHashMap<String, Node> getPaths() {
         return paths;
     }
 
-    public static HashMap<String,Node> createNodes(List<String> list){
-        HashMap<String,Node> nodes = new HashMap<String, Node>();
+    public static LinkedHashMap<String,Node> createNodes(List<String> list){
+        LinkedHashMap<String,Node> nodes = new LinkedHashMap<String, Node>();
 
         for (String nodeName : list) {
             nodes.put(nodeName, new Node(nodeName));
@@ -38,17 +38,17 @@ public class Node {
         return nodes;
     }
 
-//    public Node getNext(char next) {
-//        if (this.aPath != null) {
-//            if (next == 'A') {
-//                return aPath;
-//            }
-//        }
-//        if (this.bPath != null) {
-//            if (next == 'B') {
-//                return bPath;
-//            }
-//        }
-//        return null;
-//    }
+    public Node getNext(char next) {
+        String alfabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // Als dat nog niet duidelijk was ;)
+        String inputOptions = alfabet.substring(0, this.getPaths().size()); // Dus een max van 26 verschillende paths.
+        int position = 0;
+        for (char ch : inputOptions.toCharArray()) {
+            if (next == ch) {
+//                System.out.println(paths.keySet().toArray()[position]);
+                return paths.get(paths.keySet().toArray()[position]);
+            }
+            position++;
+        }
+        return null;
+    }
 }
