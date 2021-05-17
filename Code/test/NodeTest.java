@@ -29,13 +29,19 @@ class NodeTest {
     }
 
     @Test
-    void createNodes() throws Exception{
+    void createNodes() throws Exception {
         List<String> list = Arrays.asList("s0", "s1", "s2", "s3");
         ArrayList<Node> nodeArr = new ArrayList<Node>();
 
-        for(String nodeName : list) {
+        for (String nodeName : list) {
             nodeArr.add(new Node(nodeName));
         }
 //        System.out.println(nodeArr.get(0).getName());
+    }
+
+    @Test
+    void setPath() throws Exception{
+        ArrayList <ArrayList<String>> paths = new ArrayList<ArrayList<String>>();
+        paths.add(0, "hallo" "Ik ben luuk");
     }
 }
