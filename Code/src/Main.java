@@ -6,7 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println(formatieveOpdracht("s0","BABBBAAB"));
-        System.out.println(eigenFiniteStateMachine("s0","BABBAAB"));
+        //System.out.println(eigenFiniteStateMachine("s0","BABBAAB"));
         System.out.println(eigenFiniteStateMachine("s0","RANDOM"));
     }
 
