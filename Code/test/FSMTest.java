@@ -19,8 +19,9 @@ public class FSMTest {
         nodeList.get("s2").setPaths(nodeList, Arrays.asList(null, "s3"));
         nodeList.get("s3").setPaths(nodeList, Arrays.asList("s3", "s0"));
 
-        // Maak de FSM.
-        FSM fsmOpdracht = new FSM(nodeList,nodeList.get("s0"),"AAAAAA");
+        // Maak de FSM en geef deze een input.
+        FSM fsmOpdracht = new FSM(nodeList,nodeList.get("s0"));
+        fsmOpdracht.setInput("AAAAAAAAAAA");
 
         // Volgens het figuur zou de machine bij een input van A bij s2 moeten stoppen.
         // Bij de FSM hier boven aangemaakt zou de output dus een list van 2 lang moeten zijn.

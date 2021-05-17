@@ -16,6 +16,10 @@ public class Node {
         return name;
     }
 
+    public LinkedHashMap<String, Node> getPaths() {
+        return paths;
+    }
+
     public void setPaths(LinkedHashMap<String, Node> nodeList, List<String> pathNames) {
         // De HashMap moet Linked zijn om zo gebruik te kunnen maken van de positie van een node.
         LinkedHashMap<String,Node> temp = new LinkedHashMap<String, Node>();
@@ -26,10 +30,6 @@ public class Node {
             temp.put(node,nodeList.get(node));
         }
         this.paths = temp;
-    }
-
-    public LinkedHashMap<String, Node> getPaths() {
-        return paths;
     }
 
     public static LinkedHashMap<String,Node> createNodes(List<String> list){
@@ -50,10 +50,12 @@ public class Node {
         for (char ch : inputOptions.toCharArray()) {
             // Check voor elke toegestane input of deze gelijk is aan de input.
             if (next == ch) {
+                // Geef de node waar de positie gelijk is aan de input terug.
                 return paths.get(paths.keySet().toArray()[position]);
             }
             position++;
         }
+        // Als er een input word gegeven die niet tussen de opties staat return null.
         return null;
     }
 }

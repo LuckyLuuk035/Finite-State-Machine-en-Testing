@@ -9,27 +9,32 @@ public class FSM {
     private String input;
 
 
-    public FSM (LinkedHashMap<String,Node> nodes, Node state, String input) {
+    public FSM (LinkedHashMap<String,Node> nodes, Node state) {
         this.nodes = nodes;
         this.state = state;
-        this.input = input;
     }
 
     public void setState(Node state) {
         this.state = state;
     }
 
+    public void setInput(String input) {
+        this.input = input;
+    }
+
     public List<String> run() {
-        List<String> path = new ArrayList<String>();
-        path.add(this.state.getName());
+        // Begin met een lege lijst waar alle states in worden opgeslagen.
+        List<String> pathTracker = new ArrayList<String>();
+        pathTracker.add(this.state.getName()); // Voeg de begins state toe.
+
         for(char ch : input.toCharArray()) {
             Node nextNode = state.getNext(ch);
             if (nextNode == null) {
                 break;
             }
             setState(nextNode);
-            path.add(state.getName());
+            pathTracker.add(state.getName());
         }
-        return path;
+        return pathTracker;
     }
 }
