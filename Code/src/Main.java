@@ -47,5 +47,7 @@ public class Main {
 
         // Maak de Finite State Machine
         FSM selfMadeFSM = new FSM(nodeList,nodeList.get("s0"));
+        selfMadeFSM.setInput("BABBAAB");
+        System.out.println(selfMadeFSM.run());
     }
 }
