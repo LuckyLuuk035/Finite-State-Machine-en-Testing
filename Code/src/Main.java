@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -6,12 +5,12 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        formatieveOpdracht();
-        eigenFiniteStateMachine();
+        formatieveOpdracht("BABBBAAB");
+        System.out.println(eigenFiniteStateMachine("BABBAAB"));
     }
 
     // De hieronder gemaakte netwerken staan ook in het mapje 'afbeelding' als png opgeslagen.
-    private static void formatieveOpdracht() {
+    public static List<String> formatieveOpdracht(String input) {
         // Maak de nodes van de Formatieve Opdracht aan.
         LinkedHashMap<String, Node> nodeList = Node.createNodes(Arrays.asList("s0", "s1", "s2", "s3"));
 
@@ -23,11 +22,12 @@ public class Main {
 
         // Maak de Finite State Machine en run deze met een gegeven input.
         FSM fsmOpdracht = new FSM(nodeList,nodeList.get("s0"));
-        fsmOpdracht.setInput("BABBBAAB");
-        System.out.println(fsmOpdracht.run());
+        fsmOpdracht.setInput(input);
+
+        return fsmOpdracht.run();
     }
 
-    private static void eigenFiniteStateMachine() {
+    public static List<String> eigenFiniteStateMachine(String input) {
         // Maak de nodes voor de FSM.
         LinkedHashMap<String, Node> nodeList = Node.createNodes(Arrays.asList("s0", "s1", "s2", "s3","s4", "s5", "s6", "s7","s8", "s9", "s10", "s11"));
 
@@ -45,9 +45,10 @@ public class Main {
         nodeList.get("s10").setPaths(nodeList, Arrays.asList(null,"s8"));
         nodeList.get("s11").setPaths(nodeList, Arrays.asList(null,"s8"));
 
-        // Maak de Finite State Machine
+        // Maak de Finite State Machine en run deze met de input.
         FSM selfMadeFSM = new FSM(nodeList,nodeList.get("s0"));
-        selfMadeFSM.setInput("BABBAAB");
-        System.out.println(selfMadeFSM.run());
+        selfMadeFSM.setInput(input);
+
+        return selfMadeFSM.run();
     }
 }
