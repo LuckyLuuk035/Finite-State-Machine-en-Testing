@@ -1,14 +1,15 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
 public class FSM {
-    private List<Node> nodes;
+    private HashMap<String, Node> nodes;
     private Node state;
     private String input;
 
 
-    public FSM (List<Node> nodes, Node state, String input) {
+    public FSM (HashMap<String,Node> nodes, Node state, String input) {
         this.nodes = nodes;
         this.state = state;
         this.input = input;

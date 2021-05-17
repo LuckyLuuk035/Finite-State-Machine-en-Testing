@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -31,17 +32,11 @@ class NodeTest {
     @Test
     void createNodes() throws Exception {
         List<String> list = Arrays.asList("s0", "s1", "s2", "s3");
-        ArrayList<Node> nodeArr = new ArrayList<Node>();
+        HashMap<String,Node> nodes = new HashMap<String, Node>();
 
         for (String nodeName : list) {
-            nodeArr.add(new Node(nodeName));
+            nodes.put(nodeName, new Node(nodeName));
         }
 //        System.out.println(nodeArr.get(0).getName());
-    }
-
-    @Test
-    void setPath() throws Exception{
-        ArrayList <ArrayList<String>> paths = new ArrayList<ArrayList<String>>();
-        paths.add(0, "hallo" "Ik ben luuk");
     }
 }

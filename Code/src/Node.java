@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class Node {
@@ -25,13 +26,13 @@ public class Node {
         this.bPath = bPath;
     }
 
-    public static ArrayList<Node> createNodes(List<String> list){
-        ArrayList<Node> nodeArr = new ArrayList<Node>();
+    public static HashMap<String,Node> createNodes(List<String> list){
+        HashMap<String,Node> nodes = new HashMap<String, Node>();
 
-        for(String nodeName : list) {
-            nodeArr.add(new Node(nodeName));
+        for (String nodeName : list) {
+            nodes.put(nodeName, new Node(nodeName));
         }
-        return nodeArr;
+        return nodes;
     }
 
     public Node getNext(char next) {
