@@ -1,4 +1,7 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class Main {
 
@@ -31,10 +34,7 @@ public class Main {
 //        s3.setAPath(s3);
 //        s3.setBPath(s0);
 //
-//        nodeList.add(s0);
-//        nodeList.add(s1);
-//        nodeList.add(s2);
-//        nodeList.add(s3);
-//
 //        FSM fsm1 = new FSM(nodeList, s0 ,"BBABA");
-//        assertEquals(l1, fsm1.run());
+
+
+// System.out.println(nodeList.get("s0").getPaths());
