@@ -4,7 +4,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 public class Node {
-
     private String name;
     private LinkedHashMap<String, Node> paths;
 
@@ -18,8 +17,12 @@ public class Node {
     }
 
     public void setPaths(LinkedHashMap<String, Node> nodeList, List<String> pathNames) {
+        // De HashMap moet Linked zijn om zo gebruik te kunnen maken van de positie van een node.
         LinkedHashMap<String,Node> temp = new LinkedHashMap<String, Node>();
+
+        // Voor alle namen van nodes waar de huidige node aan moet verbinden.
         for(String node : pathNames){
+            // Voeg aan de tijdelijke LinkedHashMap de verbindingen met de naam als key toe.
             temp.put(node,nodeList.get(node));
         }
         this.paths = temp;
@@ -32,6 +35,7 @@ public class Node {
     public static LinkedHashMap<String,Node> createNodes(List<String> list){
         LinkedHashMap<String,Node> nodes = new LinkedHashMap<String, Node>();
 
+        // Maak voor alle meegegeven namen een node aan met de naam als key en stop deze in de LinkedHashMap.
         for (String nodeName : list) {
             nodes.put(nodeName, new Node(nodeName));
         }
@@ -40,11 +44,12 @@ public class Node {
 
     public Node getNext(char next) {
         String alfabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // Als dat nog niet duidelijk was ;)
-        String inputOptions = alfabet.substring(0, this.getPaths().size()); // Dus een max van 26 verschillende paths.
-        int position = 0;
+        String inputOptions = alfabet.substring(0, this.getPaths().size()); // Hiermee geven we de toegestane inputs aan.
+        int position = 0; // Een teller om later de juiste node terug te vinden.
+
         for (char ch : inputOptions.toCharArray()) {
+            // Check voor elke toegestane input of deze gelijk is aan de input.
             if (next == ch) {
-//                System.out.println(paths.keySet().toArray()[position]);
                 return paths.get(paths.keySet().toArray()[position]);
             }
             position++;

@@ -1,40 +1,30 @@
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.LinkedHashMap;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class FSMTest {
-    List<String> l1 = Arrays.asList("s0","s1", "s2", "s3");
-
-//    Node s0 = new Node("s0");
-//    Node s1 = new Node("s1");
-//    Node s2 = new Node("s2");
-//    Node s3 = new Node("s3");
-
-    List<Node> nodeList = new ArrayList<Node>();
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-    @Test
-    void run() throws Exception {
-        ArrayList<Node> nodeArr = new ArrayList<Node>();
-        for (int i = 0; i < 4; i++) {
-            String name = "s" + i;
-            nodeArr.add(new Node(name));
-        }
-        for (Node n : nodeArr){
-            System.out.println(n.getName());
-        }
+public class FSMTest {
+
+    @Test    // Deze test checkt of de FSM stopt nadat het een null ontvangt bij de formatieve opdracht.
+    public void formatieveOpdracht() throws Exception {
+        // Maak de nodes van de FSM aan.
+        LinkedHashMap<String, Node> nodeList = Node.createNodes(Arrays.asList("s0", "s1", "s2", "s3"));
+
+        // Geeft de nodes van het voorbeeld hun paths.
+        nodeList.get("s0").setPaths(nodeList, Arrays.asList("s2", "s1"));
+        nodeList.get("s1").setPaths(nodeList, Arrays.asList("s1", "s2"));
+        nodeList.get("s2").setPaths(nodeList, Arrays.asList(null, "s3"));
+        nodeList.get("s3").setPaths(nodeList, Arrays.asList("s3", "s0"));
+
+        // Maak de FSM.
+        FSM fsmOpdracht = new FSM(nodeList,nodeList.get("s0"),"AAAAAA");
+
+        // Volgens het figuur zou de machine bij een input van A bij s2 moeten stoppen.
+        // Bij de FSM hier boven aangemaakt zou de output dus een list van 2 lang moeten zijn.
+        assertEquals(2 ,fsmOpdracht.run().size());
     }
 
-    @Test
-    void run1() throws Exception{
-        for (int i = 0; i < 4; i++) {
-            String name = "s" + i;
-            new Node(name);
-        }
-        //System.out.println(s3);
-    }
 }
