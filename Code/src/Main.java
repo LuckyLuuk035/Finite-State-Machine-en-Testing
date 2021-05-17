@@ -12,8 +12,12 @@ public class Main {
     private static void formatieveOpdracht() {
         HashMap<String, Node> nodeList = Node.createNodes(Arrays.asList("s0", "s1", "s2", "s3"));
 
-        FSM fsmOpdracht = new FSM(nodeList,nodeList.get(0),"BBABA");
-        System.out.println(fsmOpdracht.run());
+        nodeList.get("s0").setPaths(nodeList, Arrays.asList("s2", "s1"));
+        System.out.println(nodeList.get("s0").getPaths());
+
+
+        FSM fsmOpdracht = new FSM(nodeList,nodeList.get("s0"),"BBABA");
+//        System.out.println(fsmOpdracht.run());
     }
 }
 
@@ -28,10 +32,4 @@ public class Main {
 //        s3.setAPath(s3);
 //        s3.setBPath(s0);
 //
-//        nodeList.add(s0);
-//        nodeList.add(s1);
-//        nodeList.add(s2);
-//        nodeList.add(s3);
-//
 //        FSM fsm1 = new FSM(nodeList, s0 ,"BBABA");
-//        assertEquals(l1, fsm1.run());

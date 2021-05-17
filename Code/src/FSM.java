@@ -15,25 +15,22 @@ public class FSM {
         this.input = input;
     }
 
-//    public void createNodes(){
-//        ArrayList<Node> nodeArr = new ArrayList<Node>();
-//    }
 
     public void setState(Node state) {
         this.state = state;
     }
 
-    public List<String> run() {
-        List<String> path = new ArrayList<String>();
-        path.add(this.state.getName());
-        for(char ch : input.toCharArray()) {
-            Node nextNode = state.getNext(ch);
-            if (nextNode == null) {
-                break;
-            }
-            setState(nextNode);
-            path.add(state.getName());
-        }
-        return path;
-    }
+//    public List<String> run() {
+//        List<String> path = new ArrayList<String>();
+//        path.add(this.state.getName());
+//        for(char ch : input.toCharArray()) {
+//            Node nextNode = state.getNext(ch);
+//            if (nextNode == null) {
+//                break;
+//            }
+//            setState(nextNode);
+//            path.add(state.getName());
+//        }
+//        return path;
+//    }
 }

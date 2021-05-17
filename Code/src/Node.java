@@ -6,8 +6,7 @@ import java.util.List;
 public class Node {
 
     private String name;
-    private Node aPath;
-    private Node bPath;
+    private HashMap<String, Node> paths;
 
 
     public Node(String name) {
@@ -18,12 +17,16 @@ public class Node {
         return name;
     }
 
-    public void setAPath(Node aPath) {
-        this.aPath = aPath;
+    public void setPaths(HashMap<String, Node> nodeList, List<String> pathNames) {
+        HashMap<String,Node> temp = new HashMap<String, Node>();
+        for(String node : pathNames){
+            temp.put(node,nodeList.get(node));
+        }
+        this.paths = temp;
     }
 
-    public void setBPath(Node bPath) {
-        this.bPath = bPath;
+    public HashMap<String, Node> getPaths() {
+        return paths;
     }
 
     public static HashMap<String,Node> createNodes(List<String> list){
@@ -35,17 +38,17 @@ public class Node {
         return nodes;
     }
 
-    public Node getNext(char next) {
-        if (this.aPath != null) {
-            if (next == 'A') {
-                return aPath;
-            }
-        }
-        if (this.bPath != null) {
-            if (next == 'B') {
-                return bPath;
-            }
-        }
-        return null;
-    }
+//    public Node getNext(char next) {
+//        if (this.aPath != null) {
+//            if (next == 'A') {
+//                return aPath;
+//            }
+//        }
+//        if (this.bPath != null) {
+//            if (next == 'B') {
+//                return bPath;
+//            }
+//        }
+//        return null;
+//    }
 }
