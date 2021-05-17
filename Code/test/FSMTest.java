@@ -28,4 +28,5 @@ public class FSMTest {
         assertEquals(2 ,fsmOpdracht.run().size());
     }
 
+    // Maak een test waar je de FSM meerdere inputs geeft.
 }

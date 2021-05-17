@@ -56,6 +56,7 @@ public class Node {
             position++;
         }
         // Als er een input word gegeven die niet tussen de opties staat return null.
+        System.out.println("Onbekende input gedetecteerd");
         return null;
     }
 }
