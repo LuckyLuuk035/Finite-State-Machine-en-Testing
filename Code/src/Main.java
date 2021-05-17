@@ -12,7 +12,7 @@ public class Main {
     private static void formatieveOpdracht() {
         HashMap<String, Node> nodeList = Node.createNodes(Arrays.asList("s0", "s1", "s2", "s3"));
 
-        FSM fsmOpdracht = new FSM(nodeList,nodeList.get(0),"BBABA");
+        FSM fsmOpdracht = new FSM(nodeList,nodeList.get("s0"),"BBABA");
         System.out.println(fsmOpdracht.run());
     }
 }
