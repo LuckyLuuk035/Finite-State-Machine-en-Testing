@@ -6,7 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println(formatieveOpdracht("s0","BABBBAAB"));
-        //System.out.println(eigenFiniteStateMachine("s0","BABBAAB"));
+        System.out.println(eigenFiniteStateMachine("s0","BABBAAB"));
         System.out.println(eigenFiniteStateMachine("s0","RANDOM"));
     }
 
@@ -25,7 +25,7 @@ public class Main {
         FSM fsmOpdracht = new FSM(nodeList,nodeList.get(startNode));
         fsmOpdracht.setInput(input);
 
-        System.out.println("Formatieve Opdracht output:");
+        System.out.println("Formatieve Opdracht");
         return fsmOpdracht.run();
     }
 
@@ -51,7 +51,7 @@ public class Main {
         FSM selfMadeFSM = new FSM(nodeList, nodeList.get(startNode));
         selfMadeFSM.setInput(input);
 
-        System.out.println("Zelf gemaakte Finite State Machine output:");
+        System.out.println("Zelf gemaakte Finite State Machine");
         return selfMadeFSM.run();
     }
 }
