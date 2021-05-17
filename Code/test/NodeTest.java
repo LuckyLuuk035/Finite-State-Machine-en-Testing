@@ -17,17 +17,6 @@ class NodeTest {
         assertEquals("n0" , n0.getName());
     }
 
-    @Test
-    void getNext() throws Exception{
-        Node n1 = new Node("n1");
-        Node n2 = new Node("n2");
-
-        n0.setAPath(n1);
-        n0.setBPath(n2);
-
-        assertEquals("n1",n0.getNext('A').getName());
-        assertEquals("n2",n0.getNext('B').getName());
-    }
 
     @Test
     void createNodes() throws Exception {

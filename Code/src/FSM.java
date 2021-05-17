@@ -1,23 +1,19 @@
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 
 public class FSM {
-    private HashMap<String, Node> nodes;
+    private LinkedHashMap<String, Node> nodes;
     private Node state;
     private String input;
 
 
-    public FSM (HashMap<String,Node> nodes, Node state, String input) {
+    public FSM (LinkedHashMap<String,Node> nodes, Node state, String input) {
         this.nodes = nodes;
         this.state = state;
         this.input = input;
     }
-
-//    public void createNodes(){
-//        ArrayList<Node> nodeArr = new ArrayList<Node>();
-//    }
 
     public void setState(Node state) {
         this.state = state;

@@ -1,13 +1,12 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class Node {
 
     private String name;
-    private Node aPath;
-    private Node bPath;
+    private LinkedHashMap<String, Node> paths;
 
 
     public Node(String name) {
@@ -18,16 +17,20 @@ public class Node {
         return name;
     }
 
-    public void setAPath(Node aPath) {
-        this.aPath = aPath;
+    public void setPaths(LinkedHashMap<String, Node> nodeList, List<String> pathNames) {
+        LinkedHashMap<String,Node> temp = new LinkedHashMap<String, Node>();
+        for(String node : pathNames){
+            temp.put(node,nodeList.get(node));
+        }
+        this.paths = temp;
     }
 
-    public void setBPath(Node bPath) {
-        this.bPath = bPath;
+    public LinkedHashMap<String, Node> getPaths() {
+        return paths;
     }
 
-    public static HashMap<String,Node> createNodes(List<String> list){
-        HashMap<String,Node> nodes = new HashMap<String, Node>();
+    public static LinkedHashMap<String,Node> createNodes(List<String> list){
+        LinkedHashMap<String,Node> nodes = new LinkedHashMap<String, Node>();
 
         for (String nodeName : list) {
             nodes.put(nodeName, new Node(nodeName));
@@ -36,15 +39,15 @@ public class Node {
     }
 
     public Node getNext(char next) {
-        if (this.aPath != null) {
-            if (next == 'A') {
-                return aPath;
+        String alfabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // Als dat nog niet duidelijk was ;)
+        String inputOptions = alfabet.substring(0, this.getPaths().size()); // Dus een max van 26 verschillende paths.
+        int position = 0;
+        for (char ch : inputOptions.toCharArray()) {
+            if (next == ch) {
+//                System.out.println(paths.keySet().toArray()[position]);
+                return paths.get(paths.keySet().toArray()[position]);
             }
-        }
-        if (this.bPath != null) {
-            if (next == 'B') {
-                return bPath;
-            }
+            position++;
         }
         return null;
     }
