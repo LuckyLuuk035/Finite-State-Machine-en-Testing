@@ -30,7 +30,7 @@ public class FSM {
         // Voor elke character van de input.
         for(char ch : input.toCharArray()) {
             // Krijg de volgende state.
-            Node nextNode = state.getNext(ch);
+            Node nextNode = state.getNext(ch,input);
             if (nextNode == null) {
                 break;
             }

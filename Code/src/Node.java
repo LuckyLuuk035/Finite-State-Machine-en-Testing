@@ -1,5 +1,6 @@
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Random;
 
 public class Node {
     private String name;
@@ -40,21 +41,31 @@ public class Node {
         return nodes;
     }
 
-    public Node getNext(char next) {
+    public Node getNext(char next, String input) {
         String alfabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // Als dat nog niet duidelijk was ;)
         String inputOptions = alfabet.substring(0, this.getPaths().size()); // Hiermee geven we de toegestane inputs aan.
-        int position = 0; // Een teller om later de juiste node terug te vinden.
 
-        for (char ch : inputOptions.toCharArray()) {
-            // Check voor elke toegestane input of deze gelijk is aan de input.
-            if (next == ch) {
-                // Geef de node waar de positie gelijk is aan de input terug.
-                return paths.get(paths.keySet().toArray()[position]);
-            }
-            position++;
+        if(input == "RANDOM"){ // Check of de input Random is.
+            // Maak een random aan die een random getal kiest op basis van het aantal paths.
+            Random rand = new Random();
+            int position = rand.nextInt(this.getPaths().size());
+            return paths.get(paths.keySet().toArray()[position]);
         }
-        // Als er een input word gegeven die niet tussen de opties staat return null.
-        System.out.println("Onbekende input gedetecteerd");
-        return null;
+
+        else { // Wanneer de input een String van keuzes is.
+            int position = 0; // Een teller om later de juiste node terug te vinden.
+
+            for (char ch : inputOptions.toCharArray()) {
+                // Check voor elke toegestane input of deze gelijk is aan de input.
+                if (next == ch) {
+                    // Geef de node waar de positie gelijk is aan de input terug.
+                    return paths.get(paths.keySet().toArray()[position]);
+                }
+                position++;
+            }
+            // Als er een input word gegeven die niet tussen de opties staat return null.
+            System.out.println("Onbekende input gedetecteerd");
+            return null;
+        }
     }
 }
