@@ -5,12 +5,12 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        formatieveOpdracht("BABBBAAB");
-        System.out.println(eigenFiniteStateMachine("BABBAAB"));
+        System.out.println(formatieveOpdracht("s0","BABBBAAB"));
+        System.out.println(eigenFiniteStateMachine("s0","BABBAAB"));
     }
 
     // De hieronder gemaakte netwerken staan ook in het mapje 'afbeelding' als png opgeslagen.
-    public static List<String> formatieveOpdracht(String input) {
+    public static List<String> formatieveOpdracht(String startNode, String input) {
         // Maak de nodes van de Formatieve Opdracht aan.
         LinkedHashMap<String, Node> nodeList = Node.createNodes(Arrays.asList("s0", "s1", "s2", "s3"));
 
@@ -21,13 +21,14 @@ public class Main {
         nodeList.get("s3").setPaths(nodeList, Arrays.asList("s3", "s0"));
 
         // Maak de Finite State Machine en run deze met een gegeven input.
-        FSM fsmOpdracht = new FSM(nodeList,nodeList.get("s0"));
+        FSM fsmOpdracht = new FSM(nodeList,nodeList.get(startNode));
         fsmOpdracht.setInput(input);
 
+        System.out.println("Formatieve Opdracht output:");
         return fsmOpdracht.run();
     }
 
-    public static List<String> eigenFiniteStateMachine(String input) {
+    public static List<String> eigenFiniteStateMachine(String startNode, String input) {
         // Maak de nodes voor de FSM.
         LinkedHashMap<String, Node> nodeList = Node.createNodes(Arrays.asList("s0", "s1", "s2", "s3","s4", "s5", "s6", "s7","s8", "s9", "s10", "s11"));
 
@@ -46,9 +47,10 @@ public class Main {
         nodeList.get("s11").setPaths(nodeList, Arrays.asList(null,"s8"));
 
         // Maak de Finite State Machine en run deze met de input.
-        FSM selfMadeFSM = new FSM(nodeList,nodeList.get("s0"));
+        FSM selfMadeFSM = new FSM(nodeList, nodeList.get(startNode));
         selfMadeFSM.setInput(input);
 
+        System.out.println("Zelf gemaakte Finite State Machine output:");
         return selfMadeFSM.run();
     }
 }
