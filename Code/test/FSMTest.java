@@ -1,7 +1,6 @@
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -35,6 +34,25 @@ class FSMTest {
         assertEquals(s10,s11);
         if (s10 == s11); {
             System.out.println("De lengtes zijn gelijk aan elkaar.\nEn die lengte is " + s10);
+        }
+
+        // Ook doen we een check of de 'RANDOM' wel random inputs geeft.
+        List<List<String>> lst = new java.util.ArrayList<List<String>>(Collections.singletonList(Collections.<String>emptyList()));
+        final Set<List<String>> setToReturn = new HashSet<>();
+        final Set<List<String>> set1 = new HashSet<>();
+
+        for (int i = 0; i < 100; i++) {
+            lst.add(Main.eigenFiniteStateMachine("s0","RANDOM"));
+        }
+        for (List<String> i : lst) {
+            if (!set1.add(i))
+            {
+                setToReturn.add(i);
+            }
+        }
+        // als 5% of minder dubbel is:
+        if (setToReturn.size() <= 5) {
+            System.out.println("De random input is daadwerkelijk random");
         }
     }
 }
