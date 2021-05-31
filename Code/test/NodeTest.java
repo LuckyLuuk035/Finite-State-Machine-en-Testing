@@ -1,17 +1,17 @@
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+import org.w3c.dom.NodeList;
 
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class NodeTest {
-    Node n0 = new Node("n0");
-
 
     @Test // Check of de getName werkt.
     public void getName() throws Exception {
+        Node n0 = new Node("n0");
         assertEquals("n0" , n0.getName());
     }
 
@@ -25,9 +25,18 @@ class NodeTest {
             assertEquals(nodeName, nodeList.get(nodeName).getName());
         }
     }
+    @Test
+    void setPath() throws Exception {
+        List<String> nodeNames = Arrays.asList("s0", "s1", "s2", "s3");
+        LinkedHashMap<String, Node> nodeList = Node.createNodes(nodeNames);
 
-    @Test // check of de FSM daadwerkelijk stopt als hij een a ontvangt bij s2.
-    void FSMformatieveOpddracht() throws Exception {
-        assertEquals(1,Main.formatieveOpdracht("s2","ABABABABA").size());
+        nodeList.get("s0").setPaths(nodeList, Arrays.asList("s2", "s1"));
+        nodeList.get("s1").setPaths(nodeList, Arrays.asList("s1", "s2"));
+        nodeList.get("s2").setPaths(nodeList, Arrays.asList(null, "s3"));
+        nodeList.get("s3").setPaths(nodeList, Arrays.asList("s3", "s0"));
+
+        for (String name : nodeNames) {
+            ;
+        }
     }
 }

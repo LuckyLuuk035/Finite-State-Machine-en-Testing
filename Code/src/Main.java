@@ -5,8 +5,15 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
+        System.out.println("Formatieve Opdracht met input:");
         System.out.println(formatieveOpdracht("s0","BABBBAAB"));
+        System.out.println("Formatieve Opdracht met een random input:");
+        System.out.println(formatieveOpdracht("s0","RANDOM"));
+
+        System.out.println("Zelf gemaakte Finite State Machine met input:");
         System.out.println(eigenFiniteStateMachine("s0","BABBAAB"));
+
+        System.out.println("Zelf gemaakte Finite State Machine met een random input:");
         System.out.println(eigenFiniteStateMachine("s0","RANDOM"));
     }
 
@@ -25,7 +32,6 @@ public class Main {
         FSM fsmOpdracht = new FSM(nodeList,nodeList.get(startNode));
         fsmOpdracht.setInput(input);
 
-        System.out.println("Formatieve Opdracht");
         return fsmOpdracht.run();
     }
 
@@ -51,7 +57,6 @@ public class Main {
         FSM selfMadeFSM = new FSM(nodeList, nodeList.get(startNode));
         selfMadeFSM.setInput(input);
 
-        System.out.println("Zelf gemaakte Finite State Machine");
         return selfMadeFSM.run();
     }
 }
